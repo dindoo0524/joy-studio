@@ -34,7 +34,7 @@ Joy’s Studio는 제가 직접 **프론트엔드 구조, UI 시스템, 상태 �
 
 ```bash
 joy-studio/
-  └─ joy-board/              # 쿠폰 관리자 프로젝트 (진행 중)
+  └─ joy-board/             
        ├─ src/
        │   ├─ shared/
        │   ├─ entities/
@@ -43,3 +43,18 @@ joy-studio/
        │   └─ app/
        ├─ public/
        └─ README.md
+
+```
+
+▶️ Getting Started | joy-board 실행 방법
+
+```
+# 프로젝트 루트로 이동
+cd joy-board
+
+# 의존성 설치 (pnpm 기준)
+pnpm install
+
+# 개발 서버 실행
+pnpm dev
+```
