@@ -8,42 +8,162 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createRootRoute } from '@tanstack/react-router'
-
+import { Route as rootRouteImport } from './pages/__root'
+import { Route as UsersRouteImport } from './pages/users'
+import { Route as SettingsRouteImport } from './pages/settings'
+import { Route as DashboardRouteImport } from './pages/dashboard'
+import { Route as AnalyticsRouteImport } from './pages/analytics'
 import { Route as IndexRouteImport } from './pages/index'
+import { Route as CouponsIndexRouteImport } from './pages/coupons/index'
+import { Route as CouponsFormRouteImport } from './pages/coupons/form'
+import { Route as CouponsCouponIdRouteImport } from './pages/coupons/$couponId'
 
-const rootRouteImport = createRootRoute()
-
+const UsersRoute = UsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CouponsIndexRoute = CouponsIndexRouteImport.update({
+  id: '/coupons/',
+  path: '/coupons/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CouponsFormRoute = CouponsFormRouteImport.update({
+  id: '/coupons/form',
+  path: '/coupons/form',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CouponsCouponIdRoute = CouponsCouponIdRouteImport.update({
+  id: '/coupons/$couponId',
+  path: '/coupons/$couponId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/dashboard': typeof DashboardRoute
+  '/settings': typeof SettingsRoute
+  '/users': typeof UsersRoute
+  '/coupons/$couponId': typeof CouponsCouponIdRoute
+  '/coupons/form': typeof CouponsFormRoute
+  '/coupons': typeof CouponsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/dashboard': typeof DashboardRoute
+  '/settings': typeof SettingsRoute
+  '/users': typeof UsersRoute
+  '/coupons/$couponId': typeof CouponsCouponIdRoute
+  '/coupons/form': typeof CouponsFormRoute
+  '/coupons': typeof CouponsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/dashboard': typeof DashboardRoute
+  '/settings': typeof SettingsRoute
+  '/users': typeof UsersRoute
+  '/coupons/$couponId': typeof CouponsCouponIdRoute
+  '/coupons/form': typeof CouponsFormRoute
+  '/coupons/': typeof CouponsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/analytics'
+    | '/dashboard'
+    | '/settings'
+    | '/users'
+    | '/coupons/$couponId'
+    | '/coupons/form'
+    | '/coupons'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/analytics'
+    | '/dashboard'
+    | '/settings'
+    | '/users'
+    | '/coupons/$couponId'
+    | '/coupons/form'
+    | '/coupons'
+  id:
+    | '__root__'
+    | '/'
+    | '/analytics'
+    | '/dashboard'
+    | '/settings'
+    | '/users'
+    | '/coupons/$couponId'
+    | '/coupons/form'
+    | '/coupons/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AnalyticsRoute: typeof AnalyticsRoute
+  DashboardRoute: typeof DashboardRoute
+  SettingsRoute: typeof SettingsRoute
+  UsersRoute: typeof UsersRoute
+  CouponsCouponIdRoute: typeof CouponsCouponIdRoute
+  CouponsFormRoute: typeof CouponsFormRoute
+  CouponsIndexRoute: typeof CouponsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/users': {
+      id: '/users'
+      path: '/users'
+      fullPath: '/users'
+      preLoaderRoute: typeof UsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -51,11 +171,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/coupons/': {
+      id: '/coupons/'
+      path: '/coupons'
+      fullPath: '/coupons'
+      preLoaderRoute: typeof CouponsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/coupons/form': {
+      id: '/coupons/form'
+      path: '/coupons/form'
+      fullPath: '/coupons/form'
+      preLoaderRoute: typeof CouponsFormRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/coupons/$couponId': {
+      id: '/coupons/$couponId'
+      path: '/coupons/$couponId'
+      fullPath: '/coupons/$couponId'
+      preLoaderRoute: typeof CouponsCouponIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AnalyticsRoute: AnalyticsRoute,
+  DashboardRoute: DashboardRoute,
+  SettingsRoute: SettingsRoute,
+  UsersRoute: UsersRoute,
+  CouponsCouponIdRoute: CouponsCouponIdRoute,
+  CouponsFormRoute: CouponsFormRoute,
+  CouponsIndexRoute: CouponsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

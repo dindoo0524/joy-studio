@@ -1,10 +1,11 @@
-import { Outlet } from '@tanstack/react-router';
+import { createRootRoute, Outlet } from '@tanstack/react-router'
 
-export default function Root() {
-  return (
-    <div>
-      <h1>Welcome!</h1>
-      <Outlet />
-    </div>
-  );
-}
+const Root = () => (
+  <div className="app">
+    <Outlet />
+  </div>
+)
+
+export const Route = createRootRoute({
+  component: Root,
+})
